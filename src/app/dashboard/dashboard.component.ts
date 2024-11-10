@@ -33,7 +33,9 @@ export class DashboardComponent {
   @Input() drawer: any;
   constructor() {
     if (window?.innerWidth > 1200) {
-      this.drawer.mode = 'push';
+      if (this.drawer) {
+        this.drawer.mode = 'push';
+      }
     }
   }
 
