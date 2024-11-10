@@ -1,0 +1,320 @@
+<app-header [drawer]="drawer"></app-header>
+<div
+  class="dashboard"
+  [ngStyle]="{
+    'max-width': drawer._opened ? 'calc(100vw - 280px)' : '100vw'
+  }"
+  style="width: 100%; padding: 32px; border: 1px solid black"
+>
+  <div
+    style="display: flex; align-items: center; justify-content: space-between"
+  >
+    <div>
+      <h1 class="dashboard-title">Welcome Back, John Doe!</h1>
+      <p
+        style="
+          background-color: #f0f0f0;
+          border-radius: 60px;
+          padding: 2px 8px;
+          font-size: 14px;
+        "
+      >
+        Jan 01, 2023 - Dec 31, 2023
+      </p>
+    </div>
+    <div class="dashboard-top-right">
+      <button class="dashboard-top-right-btn">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-active-integration">
+    <p class="dashboard-active-integration--title" style="padding: 0px">
+      Active Integrations:
+    </p>
+    <button class="dashboard-active-integration--btn">JIRA</button
+    ><button class="dashboard-active-integration--btn">Click Up</button
+    ><button class="dashboard-active-integration--btn">AZURE</button>
+  </div>
+
+  <div
+    style="
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 16px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      "
+    >
+      <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
+        Overall Hours
+      </p>
+      <img src="assets/icons/Drag.png" alt="icon" />
+    </div>
+    <div
+      class="flex-column flex-lg-row"
+      style="display: flex; align-items: center"
+    >
+      <div class="col-12 col-lg-3" style="position: relative">
+        <app-donut-char-dashboard></app-donut-char-dashboard>
+      </div>
+      <div class="col-12 col-lg-9" style="position: relative">
+        <app-double-bar-chart></app-double-bar-chart>
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="
+      margin-top: 24px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+    "
+  >
+    <div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 16px;
+        "
+      >
+        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
+          Timesheet Summary
+        </p>
+        <img src="assets/icons/Drag.png" alt="icon" />
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        grid-row-gap: 16px;
+      "
+    >
+      <app-dashboard-cards
+        *ngFor="let card of cards"
+        [cards]="card"
+      ></app-dashboard-cards>
+    </div>
+  </div>
+
+  <div
+    style="
+      margin-top: 24px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+    "
+  >
+    <div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          margin-bottom: 16px;
+        "
+      >
+        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
+          Project Hours
+        </p>
+        <img src="assets/icons/Drag.png" alt="icon" />
+      </div>
+    </div>
+    <div style="position: relative; max-width: 100%; width: 100%">
+      <app-double-bar-chart></app-double-bar-chart>
+    </div>
+  </div>
+
+  <div
+    style="
+      margin-top: 24px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+    "
+  >
+    <div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          margin-bottom: 16px;
+        "
+      >
+        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
+          Employee’s Summary
+        </p>
+        <img src="assets/icons/Drag.png" alt="icon" />
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div
+          class="header-search-bar"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 0px !important;
+          "
+        >
+          <mat-form-field class="example-full-width">
+            <mat-label style="color: #000">Search</mat-label>
+            <input style="color: #000" type="text" matInput />
+            <mat-icon style="color: #000" matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div style="display: flex; align-items: center">
+          <button
+            style="
+              background-color: transparent;
+              font-size: 12px;
+              border-radius: 8px;
+              width: 80px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              font-weight: 600;
+              margin-right: 12px;
+              align-items: center;
+              border: 1px solid #d1d1d1;
+            "
+          >
+            Filter
+            <mat-icon style="margin-left: 6px">filter_list</mat-icon>
+          </button>
+          <button
+            style="
+              background-color: transparent;
+              font-size: 12px;
+              border-radius: 8px;
+              width: 80px;
+              font-weight: 600;
+              height: 40px;
+              border: 1px solid #d1d1d1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            Export
+            <mat-icon style="margin-left: 6px">vertical_align_bottom</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <app-dashboard-table-visible></app-dashboard-table-visible>
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="
+      margin-top: 24px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+    "
+  >
+    <div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 16px;
+        "
+      >
+        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
+          SR & ED Summary
+        </p>
+        <img src="assets/icons/Drag.png" alt="icon" />
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div
+          class="header-search-bar"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 0px !important;
+          "
+        >
+          <mat-form-field class="example-full-width">
+            <mat-label style="color: #000">Search</mat-label>
+            <input style="color: #000" type="text" matInput />
+            <mat-icon style="color: #000" matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div style="display: flex; align-items: center">
+          <button
+            style="
+              background-color: transparent;
+              font-size: 12px;
+              border-radius: 8px;
+              width: 80px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              font-weight: 600;
+              margin-right: 12px;
+              align-items: center;
+              border: 1px solid #d1d1d1;
+            "
+          >
+            Filter
+            <mat-icon style="margin-left: 6px">filter_list</mat-icon>
+          </button>
+          <button
+            style="
+              background-color: transparent;
+              font-size: 12px;
+              border-radius: 8px;
+              width: 80px;
+              font-weight: 600;
+              height: 40px;
+              border: 1px solid #d1d1d1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            Export
+            <mat-icon style="margin-left: 6px">vertical_align_bottom</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div>
+        <app-dashboard-table></app-dashboard-table>
+      </div>
+    </div>
+  </div>
+</div>

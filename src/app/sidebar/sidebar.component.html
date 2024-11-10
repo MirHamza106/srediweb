@@ -1,0 +1,33 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer mode="side" opened>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="logo" />
+    </div>
+    <mat-list class="side-list">
+      <mat-list-item class="dummy-profile">
+        <img
+          class="profile-avatar"
+          src="assets/images/avatar.png"
+          alt="avatar"
+          matListItemAvatar
+        />
+        <h1 class="profile-title" matListItemTitle>John Doe</h1>
+        <p class="profile-line">Admin</p>
+        <div class="profile-meta" matListItemMeta>
+          <mat-icon class="profile-expand">expand_more</mat-icon>
+        </div>
+      </mat-list-item>
+      <app-sidebar-menu
+        sectionHeading="GENERAL"
+        [menu]="menuTopObj"
+      ></app-sidebar-menu>
+      <app-sidebar-menu
+        sectionHeading="TOOLS"
+        [menu]="menuBottomObj"
+      ></app-sidebar-menu>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content
+    ><app-dashboard [drawer]="drawer"></app-dashboard
+  ></mat-drawer-content>
+</mat-drawer-container>

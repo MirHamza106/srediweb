@@ -1,0 +1,324 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "../node_modules/bootstrap/scss/bootstrap";
+// Font FACE
+@font-face {
+    font-family: 'Plus_Jakarta_Sans__800';
+    src: url(../public/assets/font/Plus_Jakarta_Sans/PlusJakartaSans-ExtraBold.ttf); 
+}
+@font-face {
+    font-family: 'Plus_Jakarta_Sans__700';
+    src: url(../public/assets/font/Plus_Jakarta_Sans/PlusJakartaSans-Bold.ttf);
+}
+@font-face {
+    font-family: 'Plus_Jakarta_Sans__600';
+    src: url(../public/assets/font/Plus_Jakarta_Sans/PlusJakartaSans-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'Plus_Jakarta_Sans__500';
+    src: url(../public/assets/font/Plus_Jakarta_Sans/PlusJakartaSans-Medium.ttf);
+}
+@font-face {
+    font-family: 'Plus_Jakarta_Sans__400';
+    src: url(../public/assets/font/Plus_Jakarta_Sans/PlusJakartaSans-Regular.ttf);
+}
+
+// VARIABLES
+$white: #fff;
+$black: #000;
+$background: #F7F9FB;
+$font-family-extraBold: 'Plus_Jakarta_Sans__800';
+$font-family-bold: 'Plus_Jakarta_Sans__700';
+$font-family-semiBold: 'Plus_Jakarta_Sans__600';
+$font-family-medium: 'Plus_Jakarta_Sans__500';
+$font-family-regular: 'Plus_Jakarta_Sans__400';
+
+// GLOBAL STYLES
+html, body { height: 100%; }
+body { margin: 0; font-family: $font-family-regular, sans-serif !important; }
+
+body {
+    --mat-sidenav-container-background-color: $white !important;
+    --mat-sidenav-content-background-color: $background !important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+// SIDEBAR SCSS
+.mat-drawer {
+    background-color: $white !important;
+    color: $black !important;
+    height: fit-content;
+    width: fit-content !important;
+    &-container {
+        height: 100%;
+    }
+    &-content {
+        color: $black !important;
+        background-color: $background !important;
+    }
+}
+
+.logo {
+    margin: 32px 80px 0px;
+}
+
+.profile {
+    &-title {
+        font-size: 14px !important;
+        color: $black !important;
+        font-family: $font-family-bold !important;
+        &::after, &::before {
+            display: none !important;
+        }
+    }
+    &-line {
+        color: #737373;
+        font-size: 12px;
+        font-family: $font-family-regular !important;
+        margin-top: 24px !important;
+        &::after, &::before {
+            display: none !important;
+        }
+    }
+    &-avatar {
+        margin: 0px !important;
+        margin-right: 8px !important;
+        border-radius: 6px !important;
+    }
+    &-meta {
+        margin: 0px !important;
+    }
+    &-expand {
+        color: #000 !important;
+        font-size: 27px;
+    }
+}
+
+.mat-drawer-content {
+    // margin-left: 280px !important;
+}
+
+.side-list {
+    padding-left: 18px !important;
+    padding-right: 14px !important;
+    .section-heading {
+        font-size: 14px;
+        font-family: $font-family-bold;
+        margin-bottom: 0px;
+        text-transform: uppercase;
+    }
+    
+    .section-heading-GENERAL {
+        margin-top: 36px;
+        margin-left: 7px;
+    }
+    .section-heading-TOOLS {
+        margin-top: 24px;
+        margin-left: 6px;
+    }
+}
+
+.dummy-profile {
+    padding: 8px 8px 8px 6px !important;
+    margin-top: 30px;
+    height: 56px !important;
+    border-radius: 12px !important;
+    border: 1px solid #737373;
+    .mdc-list-item__content {
+        .mdc-list-item__secondary-text {
+            &::after, &::before {
+                display: none;
+            }
+        }
+    }
+}
+
+.active {
+    background-color: #D9EDFF !important;
+}
+
+.sidebar{
+    &-menu-1 {
+        padding-right: 6px !important;
+        padding-left: 6px !important;
+        border-radius: 12px !important;
+        height: 40px !important;
+        .menu-icon {
+            margin-right: 8px !important;
+            margin-left: 0px !important;
+            color: #000 !important;
+        }
+        .menu-title {
+            @extend .profile-title;
+        }
+        .menu-expand {
+            @extend .profile-expand;
+        }
+        .menu-meta {
+            @extend .profile-meta;
+        }
+        .mdc-list-item__content {
+            .mat-mdc-list-item-title {
+                padding-top: 6px;
+            }
+        }
+    }
+}
+
+// Header Styles
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $white;
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none !important;
+    }
+    &-search-bar {
+        margin-left: 33.5px;
+        .mat-mdc-form-field {
+            width: 296px;
+        }
+        .mat-mdc-text-field-wrapper {
+            background-color: transparent !important;
+            border: 1px solid #D1D1D1;
+            border-radius: 8px;
+        }
+        .mat-mdc-form-field-icon-suffix {
+            margin-left: 0px;
+        }
+    }
+    &-right {
+        &-btns {
+            background-color: #F6F6F6;
+            border-radius: 9px;
+            padding: 9px 11px;
+            border: none;
+            margin-right: 10px;
+            .mat-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+    &-date-range {
+
+        .mat-mdc-icon-button {
+            color: $black;
+        }
+        .mat-mdc-text-field-wrapper {
+            background-color: transparent !important;
+            border: 1px solid #E7E7E7;
+            border-radius: 12px;
+        }
+    }
+}
+
+// DASHBOARD STYLINGS
+
+.dashboard {
+    &-title {
+        font: unset !important;
+        font-size: 24px !important;
+        font-family: $font-family-semiBold !important;
+    }
+    &-top-right {
+        margin-top: -10px;
+        &-btn {
+            background-color: #091836;
+            color: $white;
+            border: none;
+            width: 72px;
+            height: 48px;
+            border-radius: 8px;
+        }
+    }
+    &-active-integration {
+        display: flex;
+        align-items: center;
+        margin-top: 24px;
+        &--title {
+            font: unset !important;
+            font-size: 16px;
+            font-family: $font-family-semiBold;
+            margin-bottom: 0px !important;
+            margin-right: 8px !important;
+        }
+        &--btn {
+            background-color: #C9F3FF;
+            border-radius: 60px;
+            border: none;
+            margin-right: 8px;
+            font-size: 14px;
+            width: 88px;
+            height: 29px;
+            font-family: $font-family-semiBold;
+        }
+    }
+    &-charts-title {
+        font-size: 16px;
+        font-family: $font-family-semiBold;
+    }
+    &-card {
+        background-color: #FBFBFB;
+        border-radius: 10px;
+        max-width: 220px;
+        min-width: 220px;
+        width: 100% !important;
+        max-height: 94px;
+        height: 100%;
+        padding: 16px;
+        &-title {
+            font: unset !important;
+            font-size: 14px !important;
+            font-family: $font-family-bold !important;
+            color: #767676;
+            margin-bottom: 0px !important;
+        }
+        &-button {
+            color: #091836;
+            font-size: 12px;
+            font-family: $font-family-bold;
+            background-color: transparent;
+            border: none;
+            text-decoration: underline;
+        }
+        &-limit {
+            font: unset !important;
+            font-size: 22px !important;
+            font-family: $font-family-bold !important;
+            margin-bottom: 0px !important;
+        }
+        &-discount {
+            &--card {
+                padding: 4px;
+                border-radius: 4px;
+            }
+            &--icon {
+                font-size: 18px;
+            }
+            &--percent {
+                font-size: 12px;
+                font-family: $font-family-bold;
+            }
+        }
+    }
+}
+
+// RESPONSIVE MEDIA QUERIES
+
+@media (max-width: 1200px) {
+    .header-search-bar {
+        margin-left: 4px !important;
+        .mat-mdc-form-field {
+            width: auto !important;
+        }
+    }
+    .border-lg-1-header {
+        border: 0px !important;
+    }
+}

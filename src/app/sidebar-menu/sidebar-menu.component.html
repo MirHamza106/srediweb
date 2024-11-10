@@ -1,0 +1,19 @@
+<h4 [class]="'section-heading-' + sectionHeading" class="section-heading">
+  {{ sectionHeading }}
+</h4>
+<mat-list-item
+  style="margin-bottom: 10px"
+  *ngFor="let item of menu"
+  [ngClass]="{ active: item.active }"
+  class="sidebar-menu-1"
+>
+  <mat-icon class="menu-icon" matListItemIcon>{{ item.menuIcon }}</mat-icon>
+  <h1 class="menu-title" matListItemTitle>{{ item.menuTitle }}</h1>
+  <div
+    [ngClass]="{ 'd-none': !item.toggleExpand }"
+    class="menu-meta"
+    matListItemMeta
+  >
+    <mat-icon class="expand-icon menu-expand">expand_more</mat-icon>
+  </div>
+</mat-list-item>

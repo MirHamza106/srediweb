@@ -1,0 +1,12 @@
+<div class="content" style="">
+  <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+  <ag-grid-angular
+    [ngStyle]="{ height: height ? height : '100%' }"
+    style="width: 100%"
+    [class]="themeClass"
+    [rowData]="rowData"
+    [columnDefs]="colDefs"
+    [defaultColDef]="defaultColDef"
+    [domLayout]="'autoHeight'"
+  />
+</div>
