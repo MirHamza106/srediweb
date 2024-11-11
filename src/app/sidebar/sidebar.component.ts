@@ -63,7 +63,7 @@ export class SidebarComponent {
       },
       {
         active: false,
-        menuIcon: 'help',
+        menuIcon: 'help_outline',
         menuTitle: 'Help',
         toggleExpand: false,
       },
