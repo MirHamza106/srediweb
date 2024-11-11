@@ -22,12 +22,10 @@ export class SidebarComponent {
   menuTopObj: any[] = [];
   menuBottomObj: any[] = [];
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.menuTopObj = [
       {
         active: true,
-        menuIcon: 'home',
+        menuIcon: 'home_outline',
         menuTitle: 'Overview',
         toggleExpand: false,
       },
@@ -58,7 +56,7 @@ export class SidebarComponent {
     ];
     this.menuBottomObj = [
       {
-        active: true,
+        active: false, 
         menuIcon: 'settings',
         menuTitle: 'Account & Settings',
         toggleExpand: false,

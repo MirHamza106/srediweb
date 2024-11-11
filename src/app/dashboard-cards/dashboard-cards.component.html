@@ -1,44 +1,36 @@
-<div class="dashboard-card" style="margin-right: 16px">
-  <div style="display: flex; justify-content: space-between">
-    <h1 class="dashboard-card-title">{{ cards.dashboardCardTitle }}</h1>
-    <button
-      [ngClass]="{ 'd-none': !cards.dashboardCardButtonToggle }"
-      class="dashboard-card-button"
-    >
-      {{ cards.dashboardCardButton }}
+<div class="stat-card">
+  <div class="card-header">
+    <div class="title-container">
+      
+      <ng-container
+        *ngIf="
+          cards.dashboardCardTitle === 'Missing Timesheets';
+          else normalTitle
+        "
+      >
+        <div class="split-title">
+          <span>Missing</span>
+          <span>Timesheets</span>
+        </div>
+      </ng-container>
+      <ng-template #normalTitle>
+        <span class="card-title">{{ cards.dashboardCardTitle }}</span>
+      </ng-template>
+    </div>
+    <button *ngIf="cards.dashboardCardButtonToggle" class="remind-button">
+      <span>Remind All</span>
     </button>
   </div>
-  <div style="display: flex; justify-content: space-between; margin-top: 8px">
-    <h1 class="dashboard-card-limit">{{ cards.dashboardCardLimit }}</h1>
+
+  <div class="card-stats">
+    <span class="number">{{ cards.dashboardCardLimit }}</span>
     <div
-      class="dashboard-card-discount--card"
-      [ngStyle]="{
-        'background-color': cards.dashboardCardDiscountBackgroundColor
-          ? 'rgb(233, 248, 238)'
-          : 'rgb(248, 233, 233)'
-      }"
-      style="display: flex; justify-content: space-between"
+      class="trend-badge"
+      [class.trend-up]="cards.dashboardCardDiscountBackgroundColor"
+      [class.trend-down]="!cards.dashboardCardDiscountBackgroundColor"
     >
-      <mat-icon
-        class="dashboard-card-discount--icon"
-        [ngStyle]="{
-          color: cards.dashboardCardDiscountBackgroundColor
-            ? '#53af57'
-            : '#B14040'
-        }"
-        >{{ cards.dashboardCardDiscountIcon }}</mat-icon
-      >
-      <p
-        class="dashboard-card-discount--percent"
-        [ngStyle]="{
-          color: cards.dashboardCardDiscountBackgroundColor
-            ? '#53af57'
-            : '#B14040'
-        }"
-        style="margin-bottom: 0px !important"
-      >
-        {{ cards.dashboardCardDiscountPercent + "%" }}
-      </p>
+      <mat-icon>{{ cards.dashboardCardDiscountIcon }}</mat-icon>
+      <span>{{ cards.dashboardCardDiscountPercent }}%</span>
     </div>
   </div>
 </div>

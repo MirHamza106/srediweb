@@ -6,48 +6,71 @@ import { AgChartOptions } from 'ag-charts-community';
   selector: 'app-donut-char-dashboard',
   standalone: true,
   imports: [AgCharts],
-  template: `<ag-charts
-    [options]="options"
-    style="width: 100%; height: 400px; display: block; border-radius: 10px; background-color: #FBFBFB"
-  ></ag-charts> `,
+  template: `
+  <div style="border-radius: 10px; overflow: hidden;">
+    <ag-charts
+      [options]="options"
+      style="width: 100%; height: 350px; display: block;"
+    ></ag-charts>
+  </div>
+`,
 })
 export class DonutCharDashboardComponent {
   public options: AgChartOptions;
 
   donutChartData = [
-    { Hours: 'Total Worked Hours', Tracked: 600 },
-    { Hours: 'Total Tracked Hours', Tracked: 400 },
+    { Hours: 'Total Worked Hours', Tracked: 600, percentage: '60%' },
+    { Hours: 'Total Tracked Hours', Tracked: 400, percentage: '40%' },
   ];
 
   constructor() {
     this.options = {
       data: this.donutChartData,
+      background: {
+        fill: '#FBFBFB'
+      },
+   
       series: [
         {
           type: 'donut',
-          calloutLabelKey: 'Hours',
           angleKey: 'Tracked',
+          calloutLabelKey: 'Hours',
+          sectorLabelKey: 'percentage',
           innerRadiusRatio: 0.6,
-          fills: ['#03BCF3', '#000'],
+          sectorLabel: {
+            color: 'white',
+            fontWeight: 'bold',
+            fontSize: 14
+          },
+          fills: ['#03BCF3', '#001524'],
+          strokeWidth: 0,
           innerLabels: [
             {
               text: 'Total Hours',
               fontWeight: 'bold',
-              color: '#767676',
-              fontSize: 12,
+              color: '#333333',
+              fontSize: 16,
             },
             {
-              text: `${
-                Number(this.donutChartData[0].Tracked) +
-                Number(this.donutChartData[1].Tracked)
-              }`,
-              spacing: 4,
-              fontSize: 14,
-              color: 'black',
+              text: '1,000',
+              fontSize: 24,
+              fontWeight: 'bold',
+              color: '#000000',
             },
           ],
-          innerCircle: {
-            fill: '#fff',
+          calloutLine: {
+            colors: ['#767676', '#767676'],
+            strokeWidth: 1,
+          },
+          calloutLabel: {
+            offset: 5,
+            color: '#333333'
+          },
+          tooltip: {
+            renderer: ({ datum }) => ({
+              content: `${datum.Hours}: ${datum.Tracked} hrs`,
+              color: '#333333'
+            }),
           },
         },
       ],

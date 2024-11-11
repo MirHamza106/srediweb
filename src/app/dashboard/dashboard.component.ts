@@ -9,6 +9,7 @@ import { DashboardTableVisibleComponent } from '../dashboard-table-visible/dashb
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DashboardTableComponent } from '../dashboard-table/dashboard-table.component';
+import { HoursBarChartComponent } from '../hours-caalculation-chart/hours-bar-chart.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,7 @@ import { DashboardTableComponent } from '../dashboard-table/dashboard-table.comp
     MatIconModule,
     DonutCharDashboardComponent,
     DoubleBarChartComponent,
+    HoursBarChartComponent,
     DashboardCardsComponent,
     CommonModule,
     DashboardTableVisibleComponent,

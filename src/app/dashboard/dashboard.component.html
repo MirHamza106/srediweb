@@ -1,10 +1,11 @@
 <app-header [drawer]="drawer"></app-header>
+
 <div
   class="dashboard"
   [ngStyle]="{
     'max-width': drawer._opened ? 'calc(100vw - 280px)' : '100vw'
   }"
-  style="width: 100%; padding: 32px; border: 1px solid black"
+  style="width: 100%; padding: 32px"
 >
   <div
     style="display: flex; align-items: center; justify-content: space-between"
@@ -63,18 +64,19 @@
     </div>
     <div
       class="flex-column flex-lg-row"
-      style="display: flex; align-items: center"
+      style="display: flex; align-items: center; gap: 5px"
     >
-      <div class="col-12 col-lg-3" style="position: relative">
+      <div class="col-12 col-lg-4" style="border-radius: 10px; padding: 10px">
         <app-donut-char-dashboard></app-donut-char-dashboard>
       </div>
-      <div class="col-12 col-lg-9" style="position: relative">
+      <div class="col-12 col-lg-8" style="border-radius: 10px">
         <app-double-bar-chart></app-double-bar-chart>
       </div>
     </div>
   </div>
 
   <div
+    class="timesheet-summary"
     style="
       margin-top: 24px;
       background-color: #fff;
@@ -82,32 +84,18 @@
       border-radius: 16px;
     "
   >
-    <div>
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 16px;
-        "
-      >
-        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
-          Timesheet Summary
-        </p>
-        <img src="assets/icons/Drag.png" alt="icon" />
-      </div>
+    <div class="summary-header">
+      <h2 class="title">Timesheet Summary</h2>
+      <button class="menu-btn">
+        <mat-icon>more_vert</mat-icon>
+      </button>
     </div>
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        grid-row-gap: 16px;
-      "
-    >
+
+    <div class="cards-grid">
       <app-dashboard-cards
         *ngFor="let card of cards"
         [cards]="card"
+        class="card-wrapper"
       ></app-dashboard-cards>
     </div>
   </div>
@@ -137,7 +125,7 @@
       </div>
     </div>
     <div style="position: relative; max-width: 100%; width: 100%">
-      <app-double-bar-chart></app-double-bar-chart>
+      <app-hours-bar-chart></app-hours-bar-chart>
     </div>
   </div>
 
@@ -150,74 +138,31 @@
     "
   >
     <div>
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          margin-bottom: 16px;
-        "
-      >
-        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
-          Employee’s Summary
-        </p>
+      <div class="d-flex justify-content-between mb-3">
+        <p class="dashboard-charts-title mb-0">SR & ED Summary</p>
         <img src="assets/icons/Drag.png" alt="icon" />
       </div>
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        "
-      >
-        <div
-          class="header-search-bar"
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-left: 0px !important;
-          "
-        >
+      <div class="d-flex justify-content-between flex-wrap">
+        <!-- Search bar -->
+        <div class="header-search-bar col-12 col-lg-4 d-flex flex-column flex-lg-row mb-3 mb-lg-0">
           <mat-form-field class="example-full-width">
             <mat-label style="color: #000">Search</mat-label>
             <input style="color: #000" type="text" matInput />
             <mat-icon style="color: #000" matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
-        <div style="display: flex; align-items: center">
+        <!-- Buttons (Filter & Export) -->
+        <div class="d-flex gap-3 justify-content-center flex-lg-row align-items-start align-items-lg-center col-12 col-lg-auto">
           <button
-            style="
-              background-color: transparent;
-              font-size: 12px;
-              border-radius: 8px;
-              width: 80px;
-              height: 40px;
-              display: flex;
-              justify-content: center;
-              font-weight: 600;
-              margin-right: 12px;
-              align-items: center;
-              border: 1px solid #d1d1d1;
-            "
+            class="btn btn-outline-secondary mb-2 mb-lg-0 mr-lg-2 d-flex align-items-center"
+            style="font-size: 12px; border-radius: 8px; width: 80px; height: 40px; font-weight: 600;"
           >
             Filter
             <mat-icon style="margin-left: 6px">filter_list</mat-icon>
           </button>
           <button
-            style="
-              background-color: transparent;
-              font-size: 12px;
-              border-radius: 8px;
-              width: 80px;
-              font-weight: 600;
-              height: 40px;
-              border: 1px solid #d1d1d1;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            "
+            class="btn btn-outline-secondary mb-2 mb-lg-0 d-flex align-items-center"
+            style="font-size: 12px; border-radius: 8px; width: 80px; height: 40px; font-weight: 600;"
           >
             Export
             <mat-icon style="margin-left: 6px">vertical_align_bottom</mat-icon>
@@ -230,82 +175,33 @@
     </div>
   </div>
 
-  <div
-    style="
-      margin-top: 24px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 16px;
-    "
-  >
+  <div class="container mt-4" style="background-color: #fff; padding: 20px; border-radius: 16px;">
     <div>
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 16px;
-        "
-      >
-        <p class="dashboard-charts-title" style="padding: 0px; margin: 0px">
-          SR & ED Summary
-        </p>
+      <div class="d-flex justify-content-between mb-3">
+        <p class="dashboard-charts-title mb-0">SR & ED Summary</p>
         <img src="assets/icons/Drag.png" alt="icon" />
       </div>
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        "
-      >
-        <div
-          class="header-search-bar"
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-left: 0px !important;
-          "
-        >
+      <div class="d-flex justify-content-between flex-wrap">
+        <!-- Search bar -->
+        <div class="header-search-bar col-12 col-lg-4 d-flex flex-column flex-lg-row mb-3 mb-lg-0">
           <mat-form-field class="example-full-width">
             <mat-label style="color: #000">Search</mat-label>
             <input style="color: #000" type="text" matInput />
             <mat-icon style="color: #000" matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
-        <div style="display: flex; align-items: center">
+        <!-- Buttons (Filter & Export) -->
+        <div class="d-flex gap-3 justify-content-center flex-lg-row align-items-start align-items-lg-center col-12 col-lg-auto">
           <button
-            style="
-              background-color: transparent;
-              font-size: 12px;
-              border-radius: 8px;
-              width: 80px;
-              height: 40px;
-              display: flex;
-              justify-content: center;
-              font-weight: 600;
-              margin-right: 12px;
-              align-items: center;
-              border: 1px solid #d1d1d1;
-            "
+            class="btn btn-outline-secondary mb-2 mb-lg-0 mr-lg-2 d-flex align-items-center"
+            style="font-size: 12px; border-radius: 8px; width: 80px; height: 40px; font-weight: 600;"
           >
             Filter
             <mat-icon style="margin-left: 6px">filter_list</mat-icon>
           </button>
           <button
-            style="
-              background-color: transparent;
-              font-size: 12px;
-              border-radius: 8px;
-              width: 80px;
-              font-weight: 600;
-              height: 40px;
-              border: 1px solid #d1d1d1;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            "
+            class="btn btn-outline-secondary mb-2 mb-lg-0 d-flex align-items-center"
+            style="font-size: 12px; border-radius: 8px; width: 80px; height: 40px; font-weight: 600;"
           >
             Export
             <mat-icon style="margin-left: 6px">vertical_align_bottom</mat-icon>
@@ -317,4 +213,5 @@
       </div>
     </div>
   </div>
+  
 </div>
