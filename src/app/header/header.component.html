@@ -3,8 +3,8 @@
   style="padding: 15.5px 32px; flex-wrap: wrap"
 >
   <div
-    class="col-12 col-lg-6"
-    style="display: flex; flex-wrap: wrap; align-items: center"
+    class="col-12 flex-row col-lg-6  "
+    style="display: flex;align-items: center"
   >
     <img
       src="assets/icons/header-expand.png"
@@ -20,24 +20,40 @@
       </mat-form-field>
     </div>
   </div>
+
+
   <div
-    class="col-12 col-lg-6 flex-column-reverse flex-lg-row justify-content-center justify-content-lg-start"
-    style="display: flex; align-items: center; justify-content: flex-end"
+    class="col-12 col-lg-6 flex-column-reverse flex-lg-row "
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+    "
   >
     <div class="border-lg-1-header" style="border-right: 1px solid #c9c9c9">
-      <button class="header-right-btns">
+      <button
+        class="header-right-btns"
+        [matBadge]="emailCount"
+        matBadgeColor="warn"
+      >
         <mat-icon>email</mat-icon>
       </button>
-      <button class="header-right-btns">
+      <button
+        class="header-right-btns"
+        [matBadge]="notificationCount"
+        matBadgeColor="warn"
+      >
         <mat-icon>notifications_none</mat-icon>
       </button>
     </div>
-    <div class="header-date-range" style="margin-left: 17px">
+
+    <div class="header-date-range">
       <mat-form-field>
         <mat-label style="color: #000">Fiscal Period</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input style="color: #000" matStartDate placeholder="01-01-2023" />
-          <input style="color: #000" matEndDate placeholder="31-12-2023" />
+          <input style="color: #000" matStartDate placeholder="9-11-2024" />
+          <input style="color: #000" matEndDate placeholder="11-11-2023" />
         </mat-date-range-input>
         <mat-datepicker-toggle
           style="color: #000"
