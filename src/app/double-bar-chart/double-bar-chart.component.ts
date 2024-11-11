@@ -7,7 +7,9 @@ import { AgChartOptions } from 'ag-charts-community';
   standalone: true,
   imports: [AgCharts],
   template: `
-    <div style="border-radius: 10px; overflow: hidden;">
+    <div
+      style="border-radius: 10px; overflow: hidden; border: 1px solid #E3E3E3"
+    >
       <ag-charts
         [options]="options"
         style="width: 100%; height: 350px; display: block;"
@@ -34,7 +36,7 @@ export class DoubleBarChartComponent {
     this.options = {
       data: this.doubleBarChartData,
       background: {
-        fill: '#FBFBFB'
+        fill: '#FBFBFB',
       },
       series: [
         {
@@ -45,7 +47,7 @@ export class DoubleBarChartComponent {
           fill: '#03BCF3',
           tooltip: {
             renderer: ({ datum }) => ({
-              content: `Cumulative Hours: ${datum.cumulativeHours} hrs`
+              content: `Cumulative Hours: ${datum.cumulativeHours} hrs`,
             }),
           },
         },
@@ -57,7 +59,7 @@ export class DoubleBarChartComponent {
           fill: '#001524',
           tooltip: {
             renderer: ({ datum }) => ({
-              content: `Total Hours: ${datum.totalHours} hrs`
+              content: `Total Hours: ${datum.totalHours} hrs`,
             }),
           },
         },

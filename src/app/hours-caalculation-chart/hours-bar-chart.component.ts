@@ -13,7 +13,9 @@ interface ProjectData {
   standalone: true,
   imports: [AgCharts],
   template: `
-    <div style="border-radius: 10px; overflow: hidden;">
+    <div
+      style="border-radius: 10px; overflow: hidden; border: 1px solid #E3E3E3"
+    >
       <ag-charts
         [options]="options"
         style="width: 100%; height: 350px; display: block;"
