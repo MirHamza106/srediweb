@@ -7,13 +7,13 @@ import { AgChartOptions } from 'ag-charts-community';
   standalone: true,
   imports: [AgCharts],
   template: `
-  <div style="border-radius: 10px; overflow: hidden;">
-    <ag-charts
-      [options]="options"
-      style="width: 100%; height: 350px; display: block;"
-    ></ag-charts>
-  </div>
-`,
+    <div style="border-radius: 10px; border: 1px solid #E3E3E3">
+      <ag-charts
+        [options]="options"
+        style="width: 100%; height: 350px; display: block;"
+      ></ag-charts>
+    </div>
+  `,
 })
 export class DonutCharDashboardComponent {
   public options: AgChartOptions;
@@ -27,9 +27,9 @@ export class DonutCharDashboardComponent {
     this.options = {
       data: this.donutChartData,
       background: {
-        fill: '#FBFBFB'
+        fill: '#FBFBFB',
       },
-   
+
       series: [
         {
           type: 'donut',
@@ -37,10 +37,11 @@ export class DonutCharDashboardComponent {
           calloutLabelKey: 'Hours',
           sectorLabelKey: 'percentage',
           innerRadiusRatio: 0.6,
+          outerRadiusOffset: 1,
           sectorLabel: {
             color: 'white',
             fontWeight: 'bold',
-            fontSize: 14
+            fontSize: 10,
           },
           fills: ['#03BCF3', '#001524'],
           strokeWidth: 0,
@@ -49,11 +50,11 @@ export class DonutCharDashboardComponent {
               text: 'Total Hours',
               fontWeight: 'bold',
               color: '#333333',
-              fontSize: 16,
+              fontSize: 10,
             },
             {
               text: '1,000',
-              fontSize: 24,
+              fontSize: 12,
               fontWeight: 'bold',
               color: '#000000',
             },
@@ -64,12 +65,12 @@ export class DonutCharDashboardComponent {
           },
           calloutLabel: {
             offset: 5,
-            color: '#333333'
+            color: '#333333',
           },
           tooltip: {
             renderer: ({ datum }) => ({
               content: `${datum.Hours}: ${datum.Tracked} hrs`,
-              color: '#333333'
+              color: '#fff',
             }),
           },
         },
