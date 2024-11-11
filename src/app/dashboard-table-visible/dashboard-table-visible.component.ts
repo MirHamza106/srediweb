@@ -71,7 +71,5 @@ export class DashboardTableVisibleComponent {
     flex: 1,
   };
 
-  constructor() {
-    console.log(this.rowData.length);
-  }
+  constructor() {}
 }

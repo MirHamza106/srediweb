@@ -71,11 +71,6 @@ export class DashboardTableComponent {
       MissingTimesheets6: 11,
       MissingTimesheets7: 11,
     },
-    
-    
-    
-     
-    
   ];
 
   height = 46 * this.rowData.length + 'px';
@@ -98,7 +93,5 @@ export class DashboardTableComponent {
     flex: 1,
   };
 
-  constructor() {
-    console.log(this.rowData.length);
-  }
+  constructor() {}
 }
