@@ -1,11 +1,14 @@
-<div class="content" style="">
-  <!-- The AG Grid component, with Dimensions, CSS Theme, Row Data, and Column Definition -->
+<!-- src/app/components/dashboard-table/dashboard-table.component.html -->
+<div class="content">
   <ag-grid-angular
-    [ngStyle]="{ height: height ? height : '100%' }"
+    [ngStyle]="{ height: height }"
     style="width: 100%"
     [class]="themeClass"
     [rowData]="rowData"
     [columnDefs]="colDefs"
     [defaultColDef]="defaultColDef"
+    [overlayNoRowsTemplate]="'No data available please replace with an actual api URL'"
+    [overlayLoadingTemplate]="'Loading...'"
+    (gridReady)="onGridReady($event)"
   />
 </div>
